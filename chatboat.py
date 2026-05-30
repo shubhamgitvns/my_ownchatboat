@@ -3,6 +3,10 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer
 import re
+import nltk
+nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
 
 # Custom same meaning words
 custom_words = {
