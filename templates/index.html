@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>AI Chatbot</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body{
+
+            background: #f0f2f5;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            height: 100vh;
+        }
+
+        /* ================= MAIN CHAT BOX ================= */
+
+        .chat-container{
+
+            width: 600px;
+            height: 90vh;
+
+            background: white;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.15);
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ================= HEADER ================= */
+
+        .chat-header{
+
+            background: #6c63ff;
+
+            color: white;
+
+            padding: 18px;
+
+            text-align: center;
+
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* ================= CHAT BODY ================= */
+
+        .chat-body{
+
+            flex: 1;
+
+            padding: 15px;
+
+            overflow-y: auto;
+
+            background: #f7f8fc;
+        }
+
+        /* ================= USER MESSAGE ================= */
+
+        .user-msg{
+
+            background: #dfe9ff;
+
+            padding: 12px 15px;
+
+            border-radius: 15px;
+
+            margin-bottom: 10px;
+
+            width: fit-content;
+
+            max-width: 75%;
+
+            margin-left: auto;
+
+            color: #222;
+
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* ================= BOT MESSAGE ================= */
+
+        .bot-msg{
+
+            background: #e8f7e8;
+
+            padding: 12px 15px;
+
+            border-radius: 15px;
+
+            margin-bottom: 15px;
+
+            width: fit-content;
+
+            max-width: 75%;
+
+            color: #222;
+
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* ================= INPUT AREA ================= */
+
+        .input-area{
+
+            padding: 15px;
+
+            background: white;
+
+            border-top: 1px solid #ddd;
+
+            display: flex;
+
+            gap: 10px;
+        }
+
+        .input-area input{
+
+            flex: 1;
+
+            padding: 12px;
+
+            border-radius: 25px;
+
+            border: 1px solid #ccc;
+
+            outline: none;
+
+            font-size: 15px;
+        }
+
+        .input-area button{
+
+            padding: 12px 20px;
+
+            border: none;
+
+            border-radius: 25px;
+
+            background: #6c63ff;
+
+            color: white;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .input-area button:hover{
+
+            background: #574bdb;
+        }
+
+        b{
+            color: #333;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <script>
+
+    window.onload = function(){
+
+        let chatBody =
+        document.querySelector(".chat-body");
+
+        chatBody.scrollTop =
+        chatBody.scrollHeight;
+    }
+
+</script>
+
+    <!-- ================= CHAT CONTAINER ================= -->
+
+    <div class="chat-container">
+
+        <!-- ================= HEADER ================= -->
+
+        <div class="chat-header">
+
+            Varanasi AI Guide 🤖
+
+        </div>
+
+        <!-- ================= CHAT BODY ================= -->
+
+        <div class="chat-body">
+
+            <!-- Chat history -->
+            {% for chat in chats %}
+
+                <!-- USER MESSAGE -->
+
+                <div class="user-msg">
+
+                    <b>You:</b><br>
+                    {{ chat.user }}
+
+                </div>
+
+                <!-- BOT MESSAGE -->
+
+                <div class="bot-msg">
+
+                    <b>Bot:</b><br>
+                    {{ chat.bot }}
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+        <!-- ================= INPUT FORM ================= -->
+
+        <form action="/get" class="input-area">
+
+            <input type="text"
+                   name="msg"
+                   placeholder="Type your message..."
+                   required>
+
+            <button type="submit">
+
+                Send
+
+            </button>
+
+        </form>
+
+    </div>
+
+    <script>
+
+    let chatBody =
+    document.querySelector(".chat-body");
+
+    chatBody.scrollTop =
+    chatBody.scrollHeight;
+
+</script>
+
+</body>
+
+</html>
