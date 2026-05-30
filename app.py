@@ -25,24 +25,49 @@ def home():
     )
 
 
+# @app.route("/get")
+# def get_bot():
+
+#     user_msg = request.args.get("msg", "")
+
+#     bot_reply = get_bot_response(user_msg)
+
+#     chat_history.append(
+#         {
+#             "user": user_msg,
+#             "bot": bot_reply
+#         }
+#     )
+
+#     return render_template(
+#         "index.html",
+#         chats=chat_history
+#     )
+
 @app.route("/get")
 def get_bot():
 
-    user_msg = request.args.get("msg", "")
+    try:
 
-    bot_reply = get_bot_response(user_msg)
+        user_msg = request.args.get("msg", "")
 
-    chat_history.append(
-        {
-            "user": user_msg,
-            "bot": bot_reply
-        }
-    )
+        bot_reply = get_bot_response(user_msg)
 
-    return render_template(
-        "index.html",
-        chats=chat_history
-    )
+        chat_history.append(
+            {
+                "user": user_msg,
+                "bot": bot_reply
+            }
+        )
+
+        return render_template(
+            "index.html",
+            chats=chat_history
+        )
+
+    except Exception as e:
+
+        return str(e)
 
 
 if __name__ == "__main__":
