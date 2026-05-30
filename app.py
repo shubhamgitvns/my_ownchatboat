@@ -8,23 +8,22 @@ app = Flask(__name__)
 
 chat_history = []
 
-
 @app.route("/")
-
 def home():
 
-    return render_template("index.html")
+    return render_template(
+        "index.html",
+        chats=chat_history
+    )
 
 
 @app.route("/get")
-
 def get_bot():
 
-    user_msg = request.args.get("msg")
+    user_msg = request.args.get("msg", "")
 
     bot_reply = get_bot_response(user_msg)
 
-    # Save chat
     chat_history.append(
         {
             "user": user_msg,
@@ -38,15 +37,5 @@ def get_bot():
     )
 
 
-app.run(debug=True)
-
-# def get_bot():
-
-#     user_message = request.args.get("msg")
-
-#     response = get_bot_response(user_message)
-
-#     return response
-
-
-# app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
