@@ -208,32 +208,27 @@
 
         <!-- ================= CHAT BODY ================= -->
 
-        <div class="chat-body">
+       <div class="chat-body">
 
-            <!-- Chat history -->
-            {% for chat in chats %}
+    {% for chat in chats %}
 
-                <!-- USER MESSAGE -->
+        {% if chat.user %}
 
-                <div class="user-msg">
-
-                    <b>You:</b><br>
-                    {{ chat.user }}
-
-                </div>
-
-                <!-- BOT MESSAGE -->
-
-                <div class="bot-msg">
-
-                    <b>Bot:</b><br>
-                    {{ chat.bot }}
-
-                </div>
-
-            {% endfor %}
-
+        <div class="user-msg">
+            <br>
+            {{ chat.user }}
         </div>
+
+        {% endif %}
+
+        <div class="bot-msg">
+            <br>
+            {{ chat.bot }}
+        </div>
+
+    {% endfor %}
+
+</div>
 
         <!-- ================= INPUT FORM ================= -->
 

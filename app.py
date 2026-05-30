@@ -6,7 +6,12 @@ from chatboat import get_bot_response
 
 app = Flask(__name__)
 
-chat_history = []
+chat_history = [
+     {
+        # "user": "",
+        "bot": "Hello! I am your AI Guide. How can I help you today?"
+    }
+]
 
 @app.route("/")
 def home():
